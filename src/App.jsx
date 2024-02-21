@@ -1,55 +1,35 @@
-import reactImg from "./assets/react-core-concepts.png";
-let broj = Math.floor(Math.random() * 4);
-function conditionalRendering() {
-  if (broj === 0) {
-    return "What is the capital of Australia?";
-  } else if (broj === 1) {
-    return "Who wrote the novel To Kill a Mockingbird?";
-  } else if (broj === 2) {
-    return "What is the chemical symbol for gold?";
-  } else if (broj === 3) {
-    return "In which year did the Titanic sink?";
-  } else if (broj === 4) {
-    return "Who painted the Mona Lisa?";
-  }
-}
-
-const odgovori = ["Sydney", "Harper Lee", "Au", "1912", "Leonardo da Vinci"];
-
-function handleSubmit() {
-  const inputValue = document.querySelector("input").value;
-  if (inputValue.toLowerCase() == odgovori[broj].toLowerCase()) {
-    document.getElementById("result").innerHTML = "Correct";
-  } else {
-    document.getElementById("result").innerHTML = "Wrong";
-  }
-}
-function Next() {
-  window.location.reload();
-}
-function Header() {
-  return (
-    <header>
-      <img src={reactImg} alt="Stylized atom" />
-      <h2>{conditionalRendering(broj)}</h2>
-      <p>
-        <input type="text" /> <button onClick={handleSubmit}>Submit</button>
-        <button onClick={Next}>Next</button>
-      </p>
-
-      <p id="result"></p>
-    </header>
-  );
-  Odgovor();
-}
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
+  const [count, setCount] = useState(0)
+
   return (
-    <div>
-      <Header />
-      <main></main>
-    </div>
-  );
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App
